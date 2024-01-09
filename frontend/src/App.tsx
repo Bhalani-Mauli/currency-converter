@@ -1,9 +1,14 @@
 import "./App.css";
+import Converter from "./componants/Converter";
 
 function App() {
   return (
     <>
-      <div>currency converter</div>
+      <div className="header">
+        <img className="logo-img" src="/currencyLogo.svg" />
+        <h1>currency converter</h1>
+      </div>
+      <Converter />
     </>
   );
 }
