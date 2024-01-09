@@ -5,14 +5,14 @@ const Converter = () => {
     <div className="wrapper">
       <div className="text-wrapper">
         <label>Amount</label>
-        <input type="number" placeholder="Amount" />
+        <input type="number" placeholder="Amount" className="allInputSelect" />
         <label>From</label>
-        <select name="country">
+        <select name="country" className="allInputSelect">
           <option value="EUR">EUR</option>
           <option value="INR">INR</option>
         </select>
         <label>To</label>
-        <select name="country">
+        <select name="country" className="allInputSelect">
           <option value="INR">INR</option>
           <option value="EUR">EUR</option>
         </select>
