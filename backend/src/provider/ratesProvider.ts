@@ -3,7 +3,7 @@
 import axios from "axios";
 import parser from "xml2json";
 
-function getConversionRates() {
+function getConversionRates(): Promise<{ [currency: string]: number }> {
   //https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
   return axios
     .get("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml")
