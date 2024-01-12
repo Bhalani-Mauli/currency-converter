@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -51,7 +56,8 @@
 
 body {
   height: 100vh;
-  background-color: rgb(242, 245, 234);
+  background: linear-gradient(to bottom, #12262f, #20373f, #203944);
+  color: wheat;
 }
 
 .btn-convert {
@@ -74,7 +80,7 @@ body {
 }
 
 .logo-img {
-  height: 40px;
+  height: 90px;
   margin-right: 10px;
 }
 
