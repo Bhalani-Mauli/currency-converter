@@ -6,23 +6,6 @@ const Converter = () => {
   const [fromCurrency, setFromCurrency] = useState<string>("EUR");
   const [toCurrency, setToCurrency] = useState<string>("INR");
   const [convertedValue, setConvertedValue] = useState<number | null>(null);
-  const [conversionRates, setConversionRates] = useState<any>(null);
-
-  //api call here
-  const featchRate = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/api/convert");
-      const data = await response.json();
-      // console.log(data);
-      setConversionRates(data);
-    } catch (error) {
-      console.error("Error fetching conversion rates:", error);
-    }
-  };
-
-  useEffect(() => {
-    featchRate();
-  }, []);
 
   const handleConvert = async () => {
     try {
