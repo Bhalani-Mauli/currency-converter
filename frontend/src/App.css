@@ -4,79 +4,20 @@
 }
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  /* text-align: center; */
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.wrapper {
-  height: 50vh;
-  background-color: rgb(229, 239, 219);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin-top: 50px;
-  padding: 50px;
+  height: 100vh;
 }
 
 body {
   height: 100vh;
   background: linear-gradient(to bottom, #12262f, #20373f, #203944);
   color: wheat;
+  overflow: hidden;
+  margin: 0;
 }
 
-.btn-convert {
-  padding: 10px 20px;
-  background-color: rgb(208, 232, 184);
-  border: 1px solid rgb(124, 158, 90);
-  margin-top: 250px;
-}
-
-.text-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+h1 {
+  margin: 0;
 }
 
 .logo-img {
@@ -84,7 +25,48 @@ body {
   margin-right: 10px;
 }
 
-.allInputSelect {
-  width: 500px;
-  height: 30px;
+/** app css */
+.app-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.section-converter {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  margin: 15px 30px;
+}
+
+.section-img {
+  display: flex;
+  justify-content: center;
+  background-color: #e5d4b7;
+  flex: 2;
+}
+
+.section-img > img {
+  width: 75%;
+  background-size: cover;
+  object-fit: contain;
+}
+
+@media only screen and (max-width: 880px) {
+  .converter-wrapper {
+    width: 90%;
+    padding: 40px 20px 0 20px;
+    margin-top: 50px;
+  }
+  .section-img {
+    display: none;
+  }
+  .section-converter {
+    margin: 10px;
+  }
 }

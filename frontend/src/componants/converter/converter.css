@@ -1,0 +1,55 @@
+.converter-wrapper {
+  background-color: #f5f4f2;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 500px;
+  margin: auto;
+  margin-top: 200px;
+  padding: 50px;
+  border-radius: 20px;
+}
+
+.inputSelect {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.inputSelect:hover,
+.inputSelect:focus {
+  border-color: rgb(124, 158, 90);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.inputSelect::after {
+  content: "▼";
+  font-size: 1rem;
+  top: 6px;
+  right: 10px;
+  position: absolute;
+}
+
+.inputSelect option {
+  background-color: #fff;
+  color: #333;
+}
+
+.converter-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.converter-card > .label {
+  color: black;
+  margin-bottom: 5px;
+}
+
+.converter-card > .submit-section {
+  display: flex;
+  justify-content: center;
+}

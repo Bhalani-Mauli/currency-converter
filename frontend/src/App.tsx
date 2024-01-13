@@ -1,15 +1,21 @@
 import "./App.css";
-import Converter from "./componants/Converter";
+import Converter from "./componants/converter/Converter";
 
 function App() {
   return (
-    <>
-      <div className="header">
-        <img className="logo-img" src="/logo.png" />
-        <h1>currency converter</h1>
+    <div className="app-wrapper">
+      <div className="section-converter">
+        <div className="header">
+          <img className="logo-img" src="/logo.png" />
+          <h1>currency converter</h1>
+        </div>
+        <Converter />
       </div>
-      <Converter />
-    </>
+
+      <div className="section-img">
+        <img src="/currency.jpg" />
+      </div>
+    </div>
   );
 }
 

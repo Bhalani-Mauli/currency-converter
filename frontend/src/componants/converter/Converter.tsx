@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import "../App.css";
+import { FancyButton } from "../Button/FancyButton";
+import { countries } from "../../data/countries";
+import "./converter.css";
+
+const countriesList = Object.keys(countries);
 
 const Converter = () => {
   const [amount, setAmount] = useState<number | string>("");
@@ -26,53 +30,65 @@ const Converter = () => {
       }
 
       const data = await response.json();
-      setConvertedValue(data.total);
+      setConvertedValue(data.total.toFixed(2));
     } catch (error) {
       console.error("Error converting:", error);
     }
   };
 
+  useEffect(() => {
+    setConvertedValue(null);
+  }, [fromCurrency, toCurrency]);
+
   return (
-    <div className="wrapper">
-      <div className="text-wrapper">
-        <label>Amount</label>
+    <div className="converter-wrapper">
+      <div className="converter-card">
+        <label className="label">Amount</label>
         <input
           type="number"
           placeholder="Amount"
-          className="allInputSelect"
+          className="inputSelect"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-        <label>From</label>
+        <label className="label">From</label>
         <select
           name="country"
-          className="allInputSelect"
+          className="inputSelect"
           value={fromCurrency}
           onChange={(e) => setFromCurrency(e.target.value)}
         >
-          <option value="EUR">EUR</option>
-          <option value="INR">INR</option>
-          <option value="USD">USD</option>
+          {countriesList.map((country) => {
+            return (
+              <option key={country} value={country}>
+                {country} {countries[country]}
+              </option>
+            );
+          })}
         </select>
-        <label>To</label>
+        <label className="label">To</label>
         <select
           name="country"
-          className="allInputSelect"
+          className="inputSelect"
           value={toCurrency}
           onChange={(e) => setToCurrency(e.target.value)}
         >
-          <option value="INR">INR</option>
-          <option value="EUR">EUR</option>
-          <option value="USD">USD</option>
+          {countriesList.map((country) => {
+            return (
+              <option key={country} value={country}>
+                {country} {countries[country]}
+              </option>
+            );
+          })}
         </select>
         {convertedValue !== null && (
-          <div className="result-wrapper">
-            <p>{`${amount} ${fromCurrency} = ${convertedValue} ${toCurrency}`}</p>
+          <div className="result-wrapper label">
+            <p>{`${amount} ${countries[fromCurrency]} = ${convertedValue} ${countries[toCurrency]}`}</p>
           </div>
         )}
-        <button className="btn-convert" onClick={handleConvert}>
-          Convert
-        </button>
+        <div className="submit-section">
+          <FancyButton onClick={handleConvert}>Convert</FancyButton>
+        </div>
       </div>
     </div>
   );

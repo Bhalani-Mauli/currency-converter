@@ -1,0 +1,32 @@
+.f-btn-wrapper {
+  position: relative;
+  cursor: pointer;
+  margin: 15px;
+  height: 45px;
+  width: 160px;
+}
+.f-btn-wrapper > .baseBtn {
+  position: absolute;
+  height: 50px;
+  width: 150px;
+  border: 1px solid #416172;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+}
+.f-btn-wrapper > .ring1 {
+  margin: -5px 6px;
+}
+.f-btn-wrapper > .ring2 {
+  margin: 3px -5px;
+}
+.f-btn-wrapper > .btn {
+  border: none;
+  background-color: #182e37;
+}
+.f-btn-wrapper > .btn:hover {
+  background-color: #304e5b;
+}
