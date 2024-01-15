@@ -83,7 +83,11 @@ const Converter = () => {
         </select>
         {convertedValue !== null && (
           <div className="result-wrapper label">
-            <p>{`${amount} ${countries[fromCurrency]} = ${convertedValue} ${countries[toCurrency]}`}</p>
+            <p>
+              {amount} {countries[fromCurrency]} =
+              <span className="convertedValue"> {convertedValue} </span>
+              {countries[toCurrency]}
+            </p>
           </div>
         )}
         <div className="submit-section">
