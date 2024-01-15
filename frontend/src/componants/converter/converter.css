@@ -90,3 +90,15 @@
     background-position: 200% center;
   }
 }
+
+select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select {
+  background-image: url("downArrow.svg");
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 8px) center;
+}
