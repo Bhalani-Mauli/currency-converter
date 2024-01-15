@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
+    "warmup": "yarn install && yarn build",
+    "build": "tsc",
     "start": "node dist/server.js",
     "dev": "nodemon server.ts"
   },
