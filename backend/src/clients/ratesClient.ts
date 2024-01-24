@@ -5,7 +5,9 @@ import type {
   CurrencyRate,
 } from "../types/Common.js";
 
-const API_URL = process.env.BANK_API_URL as string;
+const API_URL =
+  (process.env.BANK_API_URL as string) ??
+  "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
 
 function getConversionRates(): Promise<CurrencyConversionResult> {
   return axios.get(API_URL).then((res) => {

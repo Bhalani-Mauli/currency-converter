@@ -4,7 +4,7 @@ interface PropTypes {
   children: React.ReactNode;
   onClick: () => void;
 }
-export const FancyButton: React.FC<PropTypes> = ({ children, onClick }) => {
+export const Button: React.FC<PropTypes> = ({ children, onClick }) => {
   return (
     <div className="f-btn-wrapper">
       <div className="ring1 baseBtn"></div>

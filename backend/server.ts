@@ -23,7 +23,7 @@ app.use("/fe", express.static("public"));
 app.use("/api/convert", indexRoute);
 
 app.listen(port, () => {
-  console.log(`Server is Fire at http://localhost:${port}`);
+  console.log(`Server is Running at http://localhost:${port}`);
 });
 
 export default app;

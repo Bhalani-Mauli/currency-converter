@@ -1,45 +1,41 @@
-//@ts-nocheck
 import { useEffect, useState } from "react";
-import { FancyButton } from "../Button/FancyButton";
+
+import { Button } from "../Button/Button";
 import { countries } from "../../data/countries";
+import { getConversionRates } from "../../apis/apis";
+import CurrencySelect from "../CurrencySelect/CurrencySelect";
+
 import "./converter.css";
 
 const countriesList = Object.keys(countries);
-const API_URL = import.meta.env.VITE_API_URL;
 
 const Converter = () => {
-  const [amount, setAmount] = useState<number | string>("");
+  const [amount, setAmount] = useState<number>(1);
   const [fromCurrency, setFromCurrency] = useState<string>("EUR");
   const [toCurrency, setToCurrency] = useState<string>("INR");
   const [convertedValue, setConvertedValue] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>();
+
   const handleConvert = async () => {
+    setError(null);
     try {
-      const response = await fetch(API_URL + "/api/convert", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: fromCurrency,
-          to: toCurrency,
-          amount: +amount,
-        }),
-      });
-
-      if (!response.ok) {
+      const response = await getConversionRates(
+        fromCurrency,
+        toCurrency,
+        amount
+      );
+      if (!response.ok)
         throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
       const data = await response.json();
       setConvertedValue(data.total.toFixed(2));
     } catch (error) {
-      console.error("Error converting:", error);
+      setError("Error Fetching the response");
     }
   };
 
   useEffect(() => {
     setConvertedValue(null);
-  }, [fromCurrency, toCurrency]);
+  }, [fromCurrency, toCurrency, amount]);
 
   return (
     <div className="converter-wrapper">
@@ -50,38 +46,20 @@ const Converter = () => {
           placeholder="Amount"
           className="inputSelect"
           value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={(e) => setAmount(+e.target.value)}
         />
-        <label className="label">From</label>
-        <select
-          name="country"
-          className="inputSelect"
+        <CurrencySelect
+          label="From"
           value={fromCurrency}
-          onChange={(e) => setFromCurrency(e.target.value)}
-        >
-          {countriesList.map((country) => {
-            return (
-              <option key={country} value={country}>
-                {country} {countries[country]}
-              </option>
-            );
-          })}
-        </select>
-        <label className="label">To</label>
-        <select
-          name="country"
-          className="inputSelect"
+          onChange={setFromCurrency}
+          currencies={countriesList}
+        />
+        <CurrencySelect
+          label="To"
           value={toCurrency}
-          onChange={(e) => setToCurrency(e.target.value)}
-        >
-          {countriesList.map((country) => {
-            return (
-              <option key={country} value={country}>
-                {country} {countries[country]}
-              </option>
-            );
-          })}
-        </select>
+          onChange={setToCurrency}
+          currencies={countriesList}
+        />
         {convertedValue !== null && (
           <div className="result-wrapper label">
             <p>
@@ -92,8 +70,9 @@ const Converter = () => {
           </div>
         )}
         <div className="submit-section">
-          <FancyButton onClick={handleConvert}>Convert</FancyButton>
+          <Button onClick={handleConvert}>Convert</Button>
         </div>
+        {error}
       </div>
     </div>
   );

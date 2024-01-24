@@ -1,7 +1,7 @@
 .converter-wrapper {
   background-color: #f5f4f2;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  width: 500px;
+  width: 400px;
   margin: auto;
   margin-top: 120px;
   padding: 50px;
@@ -105,7 +105,7 @@ select {
 }
 
 select {
-  background-image: url("downArrow.svg");
+  background-image: url("/downArrow.svg");
   background-size: 24px;
   background-repeat: no-repeat;
   background-position: calc(100% - 8px) center;
