@@ -1,11 +1,11 @@
 import { describe, it, expect, vitest } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import CurrencySelect from "./CurrencySelect";
 
 describe("CurrencySelect", async () => {
   it("Should render the CurrencySelect correctly", async () => {
     const mockChangeHandler = vitest.fn();
-    const { getByLabelText } = render(
+    render(
       <CurrencySelect
         label="From"
         value="INR"

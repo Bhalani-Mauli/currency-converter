@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import indexRoute from "./src/routes/convert.routes";
+import convertRoute from "./src/routes/convert.routes";
 import bodyParser from "body-parser";
 
 //For env File
@@ -20,7 +20,7 @@ app.use(cors());
 
 // Routes
 app.use("/fe", express.static("public"));
-app.use("/api/convert", indexRoute);
+app.use("/api/convert", convertRoute);
 
 app.listen(port, () => {
   console.log(`Server is Running at http://localhost:${port}`);

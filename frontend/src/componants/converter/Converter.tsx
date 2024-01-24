@@ -4,6 +4,7 @@ import { Button } from "../Button/Button";
 import { countries } from "../../data/countries";
 import { getConversionRates } from "../../apis/apis";
 import CurrencySelect from "../CurrencySelect/CurrencySelect";
+import Result from "../Result/Result";
 
 import "./converter.css";
 
@@ -60,19 +61,16 @@ const Converter = () => {
           onChange={setToCurrency}
           currencies={countriesList}
         />
-        {convertedValue !== null && (
-          <div className="result-wrapper label">
-            <p>
-              {amount} {countries[fromCurrency]} =
-              <span className="convertedValue"> {convertedValue} </span>
-              {countries[toCurrency]}
-            </p>
-          </div>
-        )}
+        <Result
+          amount={amount}
+          fromCurrency={fromCurrency}
+          toCurrency={toCurrency}
+          convertedValue={convertedValue}
+        />
         <div className="submit-section">
           <Button onClick={handleConvert}>Convert</Button>
         </div>
-        {error}
+        {error && <span className="error">{error}</span>}
       </div>
     </div>
   );

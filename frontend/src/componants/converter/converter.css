@@ -110,3 +110,9 @@ select {
   background-repeat: no-repeat;
   background-position: calc(100% - 8px) center;
 }
+
+.error {
+  color: rgb(176, 3, 3);
+  text-align: center;
+  margin: 10px auto;
+}
