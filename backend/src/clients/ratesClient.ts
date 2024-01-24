@@ -5,14 +5,14 @@ import type {
   CurrencyRate,
 } from "../types/Common.js";
 
+const API_URL = process.env.BANK_API_URL as string;
+
 function getConversionRates(): Promise<CurrencyConversionResult> {
-  return axios
-    .get("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml")
-    .then((res) => {
-      const json = JSON.parse(parser.toJson(res.data));
-      const conversionObj = json["gesmes:Envelope"]["Cube"]["Cube"]["Cube"];
-      return formatData(conversionObj);
-    });
+  return axios.get(API_URL).then((res) => {
+    const json = JSON.parse(parser.toJson(res.data));
+    const conversionObj = json["gesmes:Envelope"]["Cube"]["Cube"]["Cube"];
+    return formatData(conversionObj);
+  });
 }
 
 function formatData(currencyRawArr: CurrencyRate[]): {
