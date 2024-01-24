@@ -76,10 +76,18 @@
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: 200% auto;
 
-  color: #000;
+  /* color: #000;
   background-clip: text;
   text-fill-color: transparent;
   -wrgb(19, 56, 27)ackground-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shine 1s linear infinite; */
+
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 
   animation: shine 1s linear infinite;

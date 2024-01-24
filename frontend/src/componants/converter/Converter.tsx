@@ -1,19 +1,20 @@
+//@ts-nocheck
 import { useEffect, useState } from "react";
 import { FancyButton } from "../Button/FancyButton";
 import { countries } from "../../data/countries";
 import "./converter.css";
 
 const countriesList = Object.keys(countries);
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Converter = () => {
   const [amount, setAmount] = useState<number | string>("");
   const [fromCurrency, setFromCurrency] = useState<string>("EUR");
   const [toCurrency, setToCurrency] = useState<string>("INR");
   const [convertedValue, setConvertedValue] = useState<number | null>(null);
-
   const handleConvert = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/convert", {
+      const response = await fetch(API_URL + "/api/convert", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
